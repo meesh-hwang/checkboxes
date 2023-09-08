@@ -17,13 +17,16 @@ code {
   align-items: center;
   justify-content: space-between;
   border: 1px solid black;
-  width: 50%;
   margin: auto;
   padding: 0 20px 0 20px;
 }
 .select-boxes {
   display: flex;
-  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.container {
   width: 50%;
   margin: auto;
 }

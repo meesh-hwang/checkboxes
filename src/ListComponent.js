@@ -1,8 +1,7 @@
 import { useState } from "react"
 
 const ListComponent = () => {
-    const [selectAll, setSelectAll] = useState(false);
-    const [deselectAll, setDeselectAll] = useState(false);
+    const [selectAll, setSelectAll] = useState(false)
     const [checked, setChecked] = useState([]);
 
     const list = [
@@ -37,27 +36,24 @@ const ListComponent = () => {
     }
 
     // Handle select all
-    const handleSelectAll = e => {
-        setSelectAll(true);
-        // Map into an array with all items with id
+    const handleSelectAll = () => {
+        setSelectAll(!selectAll);
         setChecked(list.map(item => item.id));
+        if(!selectAll) {
+            setChecked([]);
+        }
     }
 
-    // Handle deselect all
-    const handleDeselectAll = e => {
-        setDeselectAll(true);
-        // Map into an array with all items with id
-        setChecked([]);
-    }
 
     console.log(checked)
 
     return (
-        <div>
+        <div className="container">
             <h1>Checkboxes</h1>
             <div className="select-boxes">
-                    <button onClick={handleSelectAll}>Select All</button>
-                    <button onClick={handleDeselectAll}>Deselect All</button>
+                <div className="select-box">
+                    <button onClick={handleSelectAll}>Select all</button>
+                </div>
             </div>
             <div>
                 {list.map((item) => (
@@ -68,7 +64,6 @@ const ListComponent = () => {
                             name={item.name}
                             value={item.id}
                             onChange={handleCheck}
-                            // checked if selected matches item id
                             checked={checked.includes(item.id)}
                         />
                         <h3>{item.id}</h3>
